@@ -7,4 +7,5 @@ export type NFT = {
   collectionImageUrl: string | null;
   imageUrl: string;
   balance: number;
+  attributes: Record<string, any>[];
 };

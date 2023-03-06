@@ -21,6 +21,7 @@ export const getNftsForOwner = async (owner: string) => {
         collectionImageUrl: n.contract.openSea?.imageUrl ?? null,
         imageUrl: n.media[0]?.gateway ?? null,
         balance: n.balance,
+        attributes: n.rawMetadata?.attributes ?? [],
       }))
       .filter((n) => n.imageUrl),
     nextPage: nfts.pageKey,

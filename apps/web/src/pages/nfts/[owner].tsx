@@ -31,7 +31,7 @@ type ServerSideProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 export default function NFTs(props: ServerSideProps) {
   const [page] = useState(props.owner);
-  const [nfts, setNfts] = useState<any[]>(props.nfts);
+  const [nfts, setNfts] = useState(props.nfts);
 
   return (
     <div className="justify-start items-center flex flex-col min-h-[100vh] py-6 gap-y-6">
