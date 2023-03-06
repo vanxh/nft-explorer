@@ -1,6 +1,6 @@
 {
-  "name": "nft-explorer",
-  "version": "0.0.0",
+  "name": "@nft-explorer/mono-repo",
+  "version": "0.0.1",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -10,16 +10,28 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
+    "@nft-explorer/eslint-config-custom": "*",
+    "lint-staged": "^13.1.2",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "latest",
+    "husky": "^8.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "dependencies": {},
+  "lint-staged": {
+    "(apps|packages)/**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.json": [
+      "prettier --write"
+    ]
+  },
   "packageManager": "yarn@1.22.17"
 }
