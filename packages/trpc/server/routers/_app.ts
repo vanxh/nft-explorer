@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { getNftsForOwner } from "@nft-explorer/server";
 
 import { router, publicProcedure } from "../trpc";
 
@@ -10,8 +11,7 @@ export const appRouter = router({
       })
     )
     .query(({ input }) => {
-      // TODO: Implement
-      return [];
+      return getNftsForOwner(input.address);
     }),
 });
 

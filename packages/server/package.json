@@ -1,0 +1,12 @@
+{
+  "name": "@nft-explorer/server",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+  },
+  "dependencies": {
+    "alchemy-sdk": "^2.5.0"
+  }
+}

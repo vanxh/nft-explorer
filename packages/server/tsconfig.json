@@ -1,0 +1,4 @@
+{
+  "extends": "@nft-explorer/tsconfig/react-library.json",
+  "include": ["."]
+}
