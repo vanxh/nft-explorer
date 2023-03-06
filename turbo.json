@@ -1,6 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalDependencies": [
+    "**/.env.*local",
+    "$VERCEL_URL",
+    "$NEXT_PUBLIC_WEBAPP_URL"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],

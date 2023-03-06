@@ -1,10 +1,11 @@
 import type { AppProps } from "next/app";
+import { trpc } from "@nft-explorer/trpc/react";
 
 import "@/styles/globals.css";
 import Layout from "@/components/Layout";
 import Metatags from "@/components/Metatags";
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Metatags />
@@ -14,3 +15,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default trpc.withTRPC(MyApp);
