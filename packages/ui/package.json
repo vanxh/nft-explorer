@@ -8,16 +8,17 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.2",
+    "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
-    "tailwind-merge": "^1.10.0",
-    "class-variance-authority": "^0.4.0"
+    "tailwind-merge": "^1.10.0"
   },
   "devDependencies": {
+    "@nft-explorer/eslint-config-custom": "*",
+    "@nft-explorer/tsconfig": "*",
     "@types/react": "^18.0.22",
     "eslint": "^7.32.0",
-    "@nft-explorer/eslint-config-custom": "*",
     "react": "^18.2.0",
-    "@nft-explorer/tsconfig": "*",
     "typescript": "^4.5.2"
   }
 }
