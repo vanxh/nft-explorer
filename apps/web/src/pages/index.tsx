@@ -1,10 +1,7 @@
-import { Button } from "@nft-explorer/ui";
-
 export default function Web() {
   return (
     <div>
-      <h1>Web</h1>
-      <Button />
+      <h1 className="text-xl font-medium">Web</h1>
     </div>
   );
 }
