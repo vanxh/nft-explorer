@@ -10,9 +10,9 @@
   "devDependencies": {
     "@types/react": "^18.0.22",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
+    "@nft-explorer/eslint-config-custom": "*",
     "react": "^18.2.0",
-    "tsconfig": "*",
+    "@nft-explorer/tsconfig": "*",
     "typescript": "^4.5.2"
   }
 }
