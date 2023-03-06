@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nft-explorer/ui": "*",
     "@nft-explorer/trpc": "*",
+    "@nft-explorer/ui": "*",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
     "lucide-react": "^0.123.0",
     "next": "^13.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "tailwind-merge": "^1.10.0",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.2"

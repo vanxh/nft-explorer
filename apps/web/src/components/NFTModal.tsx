@@ -3,8 +3,11 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { XCircle } from "lucide-react";
+import { SiOpensea } from "react-icons/si";
 
 import type { NFT } from "@/lib/types";
+import { Button } from "@nft-explorer/ui";
+import Link from "next/link";
 
 type NFTModalProps = {
   nft: NFT;
@@ -81,6 +84,15 @@ export default function NFTModal({ nft, isOpen, close }: NFTModalProps) {
                         <h3 className="font-bold text-xl">Description</h3>
                         <p>{nft.description}</p>
                       </div>
+
+                      <Link
+                        href={`https://opensea.io/assets/ethereum/${nft.contractAddress}/${nft.tokenId}`}
+                        target="_blank"
+                        className="rounded-2xl flex flex-row items-center justify-center font-bold gap-x-2 outline-none bg-slate-200 w-max px-3 py-1 active:scale-90 ease-in-out transition-all"
+                      >
+                        <SiOpensea className="text-blue-600 h-5 w-5" />
+                        Buy on Opensea
+                      </Link>
 
                       {nft.attributes.length > 0 && (
                         <div className="flex flex-col gap-y-2">
