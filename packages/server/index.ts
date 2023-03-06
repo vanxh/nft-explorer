@@ -11,8 +11,18 @@ export const getNftsForOwner = async (owner: string) => {
 
   return {
     total: nfts.totalCount,
-    nfts: nfts.ownedNfts,
-    prevPage: owner,
+    nfts: nfts.ownedNfts
+      .map((n) => ({
+        tokenId: n.tokenId,
+        title: n.title,
+        description: n.description,
+        contractAddress: n.contract.address,
+        collectionName: n.contract.name ?? "Unknown",
+        collectionImageUrl: n.contract.openSea?.imageUrl ?? null,
+        imageUrl: n.media[0]?.gateway ?? null,
+        balance: n.balance,
+      }))
+      .filter((n) => n.imageUrl),
     nextPage: nfts.pageKey,
   };
 };

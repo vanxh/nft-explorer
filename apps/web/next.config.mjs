@@ -8,6 +8,10 @@
 const config = {
     reactStrictMode: true,
     transpilePackages: ["@nft-explorer/ui"],
+    images: {
+        dangerouslyAllowSVG: true,
+        domains: ["nft-cdn.alchemy.com"],
+    },
 };
 
 export default config;

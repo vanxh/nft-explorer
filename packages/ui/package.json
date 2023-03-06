@@ -7,6 +7,11 @@
   "scripts": {
     "lint": "eslint \"**/*.ts*\""
   },
+  "dependencies": {
+    "clsx": "^1.2.1",
+    "tailwind-merge": "^1.10.0",
+    "class-variance-authority": "^0.4.0"
+  },
   "devDependencies": {
     "@types/react": "^18.0.22",
     "eslint": "^7.32.0",
