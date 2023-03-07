@@ -17,8 +17,7 @@ export default function SearchBar({ className }: SearchBarProps) {
       onSubmit={async (e) => {
         e.preventDefault();
 
-        await router.push(`/nfts/${search}`);
-        router.reload();
+        await router.replace(`/nfts/${search}`);
       }}
       className={clsx(
         "flex flex-row items-center justify-center gap-x-4 w-[90%] lg:w-[60%] rounded-2xl bg-white/30 px-3 py-2 shadow-[20px_20px_60px_#0000000D]",

@@ -8,10 +8,11 @@ export const appRouter = router({
     .input(
       z.object({
         address: z.string(),
+        cursor: z.string().nullish(),
       })
     )
     .query(({ input }) => {
-      return getNftsForOwner(input.address);
+      return getNftsForOwner(input.address, input.cursor ?? undefined);
     }),
 });
 

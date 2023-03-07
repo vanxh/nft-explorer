@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
 } from "next";
 import { appRouter } from "@nft-explorer/trpc/server/routers/_app";
+import { trpc } from "@nft-explorer/trpc/react";
 
 import { truncateAddress } from "@/lib/utils";
 import SearchBar from "@/components/SearchBar";
@@ -30,8 +31,31 @@ export const getServerSideProps = async (
 type ServerSideProps = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 export default function NFTs(props: ServerSideProps) {
-  const [page] = useState(props.owner);
-  const [nfts, setNfts] = useState(props.nfts);
+  const { data, fetchNextPage, hasNextPage, isLoading, isInitialLoading } =
+    trpc.nfts.useInfiniteQuery(
+      {
+        address: props.owner,
+      },
+      {
+        getNextPageParam: (lastPage) => lastPage.nextPage,
+        initialData: {
+          pages: [
+            {
+              nextPage: props.nextPage,
+              nfts: props.nfts,
+              total: props.total,
+            },
+          ],
+          pageParams: [],
+        },
+      }
+    );
+
+  const nfts =
+    data?.pages.reduce(
+      (acc, page) => [...acc, ...page.nfts],
+      [] as typeof props.nfts
+    ) || [];
 
   return (
     <div className="justify-start items-center flex flex-col min-h-[100vh] py-6 gap-y-6">
@@ -53,11 +77,24 @@ export default function NFTs(props: ServerSideProps) {
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[90%]">
-          {nfts.map((nft) => (
-            <NFTCard key={nft.tokenId} nft={nft} />
-          ))}
-        </div>
+        {nfts.length > 0 && (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-[90%]">
+              {nfts.map((nft) => (
+                <NFTCard key={nft.contractAddress + nft.tokenId} nft={nft} />
+              ))}
+            </div>
+            {hasNextPage && (
+              <button
+                className="mt-5 font-medium active:scale-90 ease-in-out transition-all"
+                onClick={() => fetchNextPage()}
+                disabled={isLoading || isInitialLoading}
+              >
+                Load more
+              </button>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

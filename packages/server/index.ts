@@ -6,9 +6,10 @@ const config = {
 };
 const alchemy = new Alchemy(config);
 
-export const getNftsForOwner = async (owner: string) => {
+export const getNftsForOwner = async (owner: string, cursor?: string) => {
   const nfts = await alchemy.nft.getNftsForOwner(owner, {
     excludeFilters: [NftFilters.SPAM],
+    pageKey: cursor,
   });
 
   return {
@@ -26,6 +27,6 @@ export const getNftsForOwner = async (owner: string) => {
         attributes: n.rawMetadata?.attributes ?? [],
       }))
       .filter((n) => n.imageUrl),
-    nextPage: nfts.pageKey,
+    nextPage: nfts.pageKey ?? null,
   };
 };
