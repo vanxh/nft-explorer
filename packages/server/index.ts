@@ -1,4 +1,4 @@
-import { Alchemy, Network } from "alchemy-sdk";
+import { Alchemy, Network, NftFilters } from "alchemy-sdk";
 
 const config = {
   apiKey: process.env.ALCHEMY_API_KEY as string,
@@ -7,7 +7,9 @@ const config = {
 const alchemy = new Alchemy(config);
 
 export const getNftsForOwner = async (owner: string) => {
-  const nfts = await alchemy.nft.getNftsForOwner(owner);
+  const nfts = await alchemy.nft.getNftsForOwner(owner, {
+    excludeFilters: [NftFilters.SPAM],
+  });
 
   return {
     total: nfts.totalCount,
