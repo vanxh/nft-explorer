@@ -7,9 +7,10 @@ import NFTModal from "./NFTModal";
 
 type NFTCardProps = {
   nft: NFT;
+  owner: string;
 };
 
-export default function NFTCard({ nft }: NFTCardProps) {
+export default function NFTCard({ nft, owner }: NFTCardProps) {
   let [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -31,7 +32,12 @@ export default function NFTCard({ nft }: NFTCardProps) {
         <p className="font-medium">{nft.title}</p>
       </div>
 
-      <NFTModal nft={nft} isOpen={isOpen} close={() => setIsOpen(false)} />
+      <NFTModal
+        nft={nft}
+        owner={owner}
+        isOpen={isOpen}
+        close={() => setIsOpen(false)}
+      />
     </>
   );
 }

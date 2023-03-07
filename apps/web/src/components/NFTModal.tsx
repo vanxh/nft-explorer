@@ -8,14 +8,16 @@ import { SiOpensea } from "react-icons/si";
 import type { NFT } from "@/lib/types";
 import { Button } from "@nft-explorer/ui";
 import Link from "next/link";
+import { truncateAddress } from "@/lib/utils";
 
 type NFTModalProps = {
   nft: NFT;
+  owner: string;
   isOpen: boolean;
   close: () => void;
 };
 
-export default function NFTModal({ nft, isOpen, close }: NFTModalProps) {
+export default function NFTModal({ nft, owner, isOpen, close }: NFTModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={() => close()}>
@@ -80,11 +82,6 @@ export default function NFTModal({ nft, isOpen, close }: NFTModalProps) {
                         </h3>
                       </div>
 
-                      <div className="flex flex-col space-y-2">
-                        <h3 className="font-bold text-xl">Description</h3>
-                        <p>{nft.description}</p>
-                      </div>
-
                       <Link
                         href={`https://opensea.io/assets/ethereum/${nft.contractAddress}/${nft.tokenId}`}
                         target="_blank"
@@ -93,6 +90,16 @@ export default function NFTModal({ nft, isOpen, close }: NFTModalProps) {
                         <SiOpensea className="text-blue-600 h-5 w-5" />
                         Buy on Opensea
                       </Link>
+
+                      <div className="flex flex-col space-y-2">
+                        <h3 className="font-bold text-xl">Description</h3>
+                        <p>{nft.description}</p>
+                      </div>
+
+                      <div className="flex flex-col space-y-2">
+                        <h3 className="font-bold text-xl">Owner</h3>
+                        <p>{truncateAddress(owner)}</p>
+                      </div>
 
                       {nft.attributes.length > 0 && (
                         <div className="flex flex-col gap-y-2">
