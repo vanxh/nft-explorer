@@ -50,11 +50,14 @@ export default function NFTs(props: ServerSideProps) {
       }
     );
 
-  const nfts =
-    data?.pages.reduce(
-      (acc, page) => [...acc, ...page.nfts],
-      [] as typeof props.nfts
-    ) || [];
+  const nfts = Array.from(
+    new Set(
+      data?.pages.reduce(
+        (acc, page) => [...acc, ...page.nfts],
+        [] as typeof props.nfts
+      ) || []
+    )
+  );
 
   return (
     <div className="justify-start items-center flex flex-col min-h-[100vh] py-6 gap-y-6">
