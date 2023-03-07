@@ -37,16 +37,6 @@ export default function NFTs(props: ServerSideProps) {
       },
       {
         getNextPageParam: (lastPage) => lastPage.nextPage,
-        initialData: {
-          pages: [
-            {
-              nextPage: props.nextPage,
-              nfts: props.nfts,
-              total: props.total,
-            },
-          ],
-          pageParams: [],
-        },
       }
     );
 
