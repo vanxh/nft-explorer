@@ -57,7 +57,7 @@ export default function NFTs(props: ServerSideProps) {
         [] as typeof props.nfts
       ) || []
     )
-  );
+  ).sort((a, b) => b.title.localeCompare(a.title));
 
   return (
     <div className="justify-start items-center flex flex-col min-h-[100vh] py-6 gap-y-6">
