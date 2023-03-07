@@ -19,7 +19,7 @@ export default function NFTCard({ nft }: NFTCardProps) {
         className="flex flex-col gap-y-1 h-full w-full justify-center items-center"
       >
         <Image
-          className="rounded-2xl bg-white shadow-[20px_20px_60px_#0000000D] cursor-pointer hover:scale-105 active:scale-90 ease-in-out transition-all transform-gpu"
+          className="rounded-2xl min-h-[250px] max-w-[250px] max-h-[250px] bg-white shadow-[20px_20px_60px_#0000000D] cursor-pointer hover:scale-105 active:scale-90 ease-in-out transition-all transform-gpu"
           src={nft.imageUrl}
           alt="NFT image"
           width={250}

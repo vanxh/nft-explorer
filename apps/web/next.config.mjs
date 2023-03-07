@@ -10,7 +10,11 @@ const config = {
     transpilePackages: ["@nft-explorer/ui"],
     images: {
         dangerouslyAllowSVG: true,
-        domains: ["nft-cdn.alchemy.com", "i.seadn.io"],
+        domains: [
+            "nft-cdn.alchemy.com",
+            "i.seadn.io",
+            "static.pinkshitape.com",
+        ],
     },
 };
 
